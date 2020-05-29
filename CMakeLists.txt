@@ -40,6 +40,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-function")
 
 # Build options
 option(BUILD_TEST "Build tests" OFF)
+option(BUILD_EXAMPLES "Build examples" OFF)
 option(DOWNLOAD_ROCPRIM "Download rocPRIM and do not search for rocPRIM package" OFF)
 
 # Get dependencies
@@ -63,6 +64,12 @@ if(BUILD_TEST)
   enable_testing()
   add_subdirectory(test)
   add_subdirectory(testing)
+endif()
+
+# Tests
+if(BUILD_EXAMPLES)
+  message (STATUS "  BUILD_EXAMPLES        : ON")
+  add_subdirectory(examples)
 endif()
 
 # Package
